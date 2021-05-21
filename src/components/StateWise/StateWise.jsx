@@ -49,15 +49,18 @@ const StateWise = () => {
           showSearch
           placeholder='Select a state'
           optionFilterProp='children'
-          style={{ width: 500 }}
+          style={{ width: '100%', maxWidth: 500 }}
           onChange={handleChange}
         >
           {state &&
-            state.map((st) => (
-              <Option key={st} value={st}>
-                {st}
-              </Option>
-            ))}
+            state.map(
+              (st) =>
+                st !== 'State Unassigned' && (
+                  <Option key={st} value={st}>
+                    {st}
+                  </Option>
+                )
+            )}
         </Select>
         {selectedState ? (
           <DataGridShow name={selectedState} total={selectedStateData} />
